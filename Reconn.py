@@ -45,8 +45,6 @@ def parse_args():
 
 
 
-
-
 def sublist3r():
     # Function to run Sublist3r for subdomain enumeration
     print("[+]Running Sublist3r...")
@@ -120,15 +118,6 @@ def subjack(input_file=None, output_file=None):
 
     
     
-
-
-
-
-
-
-
-
-
 
 
 
