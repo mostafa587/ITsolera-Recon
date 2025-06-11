@@ -1,3 +1,16 @@
 requests>=2.28.0
 dnspython>=2.3.0
 python-whois>=1.7.0
+
+
+
+# Fot required tools 
+go install github.com/haccer/subjack@latest
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+sudo apt install golang
+git clone https://github.com/aboul3la/Sublist3r.git
+cd Sublist3r
+pip install -r requirements.txt
+
+# Then add each of this tools paths to $Path
+echo 'export PATH=/The Full Tool Path/:$PATH' >> ~/.bashrc
