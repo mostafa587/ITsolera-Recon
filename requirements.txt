@@ -14,3 +14,4 @@ pip install -r requirements.txt
 
 # Then add each of this tools paths to $Path
 echo 'export PATH=/The Full Tool Path/:$PATH' >> ~/.bashrc
+echo 'export PATH=/The Full Tool Path/:$PATH' >> ~/.zshrc
