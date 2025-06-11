@@ -5,10 +5,10 @@ python-whois>=1.7.0
 
 
 # Fot required tools 
-go install github.com/haccer/subjack@latest
-go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install github.com/haccer/subjack@latest                        # /Path Example/GO/bin/subjack
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest      # /Path Example/GO/bin/httpx
 sudo apt install golang
-git clone https://github.com/aboul3la/Sublist3r.git
+git clone https://github.com/aboul3la/Sublist3r.git                # /Path Example/Sublist3r/Sublist3r.py
 cd Sublist3r
 pip install -r requirements.txt
 
