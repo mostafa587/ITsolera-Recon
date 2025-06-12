@@ -36,8 +36,17 @@ pip install -r requirements.txt
 # System tools
 sudo apt install nmap whatweb
 
-# Katana (Go-based)
-go install github.com/projectdiscovery/katana/cmd/katana@latest
+# Fot required tools 
+go install github.com/haccer/subjack@latest                        # /Path Example/GO/bin/subjack
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest      # /Path Example/GO/bin/httpx
+sudo apt install golang
+git clone https://github.com/aboul3la/Sublist3r.git                # /Path Example/Sublist3r/Sublist3r.py
+cd Sublist3r
+pip install -r requirements.txt
+
+# Then add each of this tools paths to $Path
+echo 'export PATH=/The Full Tool Path/:$PATH' >> ~/.bashrc
+echo 'export PATH=/The Full Tool Path/:$PATH' >> ~/.zshrc
 ```
 
 ---
@@ -78,10 +87,10 @@ This script:
 
 ### 🔨 Active Recon (port scan, fingerprinting, crawling)
 
-> Example: `scanner.py`
+> Example: `Reconn.py`
 
 ```bash
-python3 scanner.py -t example.com -f "-sS -Pn" -oH ReconnResult/Alive_subs.txt
+python3 Reconn.py -t example.com -f "-sS -Pn" -oH ReconnResult/Alive_subs.txt
 ```
 
 * `-t`: Target IP or domain
@@ -136,14 +145,8 @@ https://example.com/products
 
 **Mostafa El-Sayed Mosaad Taha El-Badawy**
 Ethical Hacker | Web Security Researcher | Bug Bounty Hunter
-🔗 [GitHub Profile](https://github.com/yourusername) <!-- (replace with your actual profile link) -->
+🔗 [GitHub Profile]((https://github.com/mostafa587)) <!-- (replace with your actual profile link) -->
 
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
 
 ---
 
