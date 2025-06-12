@@ -87,11 +87,15 @@ def subjack(input_file=None, output_file=None):
 
     if os.path.exists(default_path):
         # If default fingerprints file exists, run Subjack with default configuration
+        if os.path.exists(output_file):
+            os.remove(output_file)
         subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-v"], check=True)
         print("[+]Subjack completed successfully. Output saved to:", output_file)
 
     elif os.path.exists(fingerprints_path):
         # If local fingerprints file exists, use it
+        if os.path.exists(output_file):
+            os.remove(output_file)
         subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-v", "-c", fingerprints_path], check=True)
         print("[+]Subjack completed successfully. Output saved to:", output_file)
 
@@ -140,6 +144,9 @@ def main():
     subjack(args.input_subjack, args.output_subjack)  # Call the subjack function with input and output file paths
 
     httpx(args.output_sublist3r,args.output_httpx)  # Call the httpx function with input and output file paths
+
+    subprocess.run(["python3", "scanner.py", "-t", args.target], check=True)
+    print("[+] Reconn1.py completed successfully.")
 
 main()  # Entry point of the script
     
