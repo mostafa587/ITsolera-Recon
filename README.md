@@ -145,7 +145,7 @@ https://example.com/products
 
 **Mostafa El-Sayed Mosaad Taha El-Badawy**
 Ethical Hacker | Web Security Researcher | Bug Bounty Hunter
-🔗 [GitHub Profile]((https://github.com/mostafa587)) <!-- (replace with your actual profile link) -->
+🔗 [GitHub Profile](https://github.com/mostafa587) <!-- (replace with your actual profile link) -->
 
 
 ---
