@@ -1,0 +1,11 @@
+[Not Vulnerable] tetsphp.vulnweb.com
+[Not Vulnerable] testasp.vulnweb.com
+[Not Vulnerable] rest.vulnweb.com
+[Not Vulnerable] testhtml5.vulnweb.com
+[Not Vulnerable] www.vulnweb.com
+[Not Vulnerable] testphp.vulnweb.com
+[Not Vulnerable] phptest.vulnweb.com
+[Not Vulnerable] tesphp.vulnweb.com
+[Not Vulnerable] test.php.vulnweb.com
+[Not Vulnerable] testaspnet.vulnweb.com
+[Not Vulnerable] test.vulnweb.com
