@@ -4,8 +4,8 @@ import sys
 import subprocess
 # Reconn.py - A reconnaissance tool that uses Sublist3r for domain enumeration
 
-homeDir = os.path.expanduser("~") # Convert ~ to the user's home directory
-Results_path = os.path.join(homeDir, "ReconnResult")
+ScriptDir = os.getcwd() # Get the current working directory
+Results_path = os.path.join(ScriptDir, "ReconnResult")
 
 
 def Paths(sublist3r_output_path = None, subjack_output = None):
@@ -15,12 +15,9 @@ def Paths(sublist3r_output_path = None, subjack_output = None):
         os.makedirs(Results_path) # Create ReconnResult directory if it doesn't exist
 
 
-
     if not os.path.exists(os.path.join(Results_path, "sublist3r_output.txt")) and sublist3r_output_path == True: # Check if sublist3r_output.txt exists in ReconnResult directory and sublist3r_output is True
         with open(os.path.join(Results_path, "sublist3r_output.txt"), "a") as f: # Create sublist3r_output.txt file in ReconnResult directory
             f.write("") # Write an empty string to the file to create it
-
-
 
 
 
@@ -36,6 +33,8 @@ def parse_args():
 
     parser.add_argument("-oJ", "--output_subjack", type=str, default=os.path.join(Results_path, "subjack_output.txt"), help="Output file for Subjack results (default: subjack_output.txt in current directory)")
     parser.add_argument("-iJ", "--input_subjack", type=str, default=os.path.join(Results_path, "sublist3r_output.txt"), help="Input file for Subjack (default: sublist3r_output.txt in current directory)")
+
+    parser.add_argument("-oH", "--output_httpx", type=str, default=os.path.join(Results_path, "Alive_subs.txt"), help="Output file for httpx results (default: Alive_subs.txt in current directory)")
 
 
     args =parser.parse_args()
@@ -88,12 +87,16 @@ def subjack(input_file=None, output_file=None):
 
     if os.path.exists(default_path):
         # If default fingerprints file exists, run Subjack with default configuration
-        subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a"], check=True)
+        if os.path.exists(output_file):
+            os.remove(output_file)
+        subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-v"], check=True)
         print("[+]Subjack completed successfully. Output saved to:", output_file)
 
     elif os.path.exists(fingerprints_path):
         # If local fingerprints file exists, use it
-        subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-c", fingerprints_path], check=True)
+        if os.path.exists(output_file):
+            os.remove(output_file)
+        subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-v", "-c", fingerprints_path], check=True)
         print("[+]Subjack completed successfully. Output saved to:", output_file)
 
     elif not os.path.exists(fingerprints_path) and not os.path.exists(default_path):
@@ -103,7 +106,7 @@ def subjack(input_file=None, output_file=None):
             # Download fingerprints.json and run Subjack
             subprocess.run(["wget", "https://raw.githubusercontent.com/haccer/subjack/master/fingerprints.json", "-O", fingerprints_path], check=True)
             print("[+] Downloaded fingerprints.json to:", fingerprints_path)
-            subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-c", fingerprints_path], check=True)
+            subprocess.run(["subjack", "-w", input_file, "-o", output_file, "-t", "30", "-ssl", "-a", "-v", "-c", fingerprints_path], check=True)
             print("[+]Subjack completed successfully. Output saved to:", output_file)
         except subprocess.CalledProcessError as e:
             print("[-]Error running Subjack:", e)
@@ -111,6 +114,19 @@ def subjack(input_file=None, output_file=None):
     else:
         # Handle case where fingerprints file cannot be found or downloaded
         print("[-]Error: Unable to find fingerprints.json or default path.")
+        sys.exit(1)
+
+
+
+def httpx(input_file=None, output_file=None):
+    print("[+]Running httpx...")
+    
+    try:
+        subprocess.run(["httpx", "-l", input_file, "-o", output_file, "-silent", "-mc", "200,201,202,203,204,205,206,300,301,302,303,304,307,308"], check=True)
+
+        print("[+]httpx completed successfully. Output saved to:", output_file)
+    except subprocess.CalledProcessError as e:
+        print("[-]Error running httpx:", e)
         sys.exit(1)
 
     
@@ -126,6 +142,11 @@ def main():
     sublist3r()  # Call the sublist3r function to start the reconnaissance process
 
     subjack(args.input_subjack, args.output_subjack)  # Call the subjack function with input and output file paths
+
+    httpx(args.output_sublist3r,args.output_httpx)  # Call the httpx function with input and output file paths
+
+    subprocess.run(["python3", "scanner.py", "-t", args.target], check=True)
+    print("[+] Reconn1.py completed successfully.")
 
 main()  # Entry point of the script
     
