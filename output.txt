@@ -1,0 +1,66 @@
+
+╔═══════════════════════════════════════════════════════════════╗
+║                    PASSIVE RECON TOOL                        ║
+║                 For Ethical Security Testing                  ║
+╚═══════════════════════════════════════════════════════════════╝
+        
+Starting passive reconnaissance for: google.com
+============================================================
+
+[+] Starting DNS Enumeration for google.com
+  A: ['192.178.24.174']
+  AAAA: ['2a00:1450:4018:800::200e']
+  MX: ['10 smtp.google.com.']
+  NS: ['ns2.google.com.', 'ns4.google.com.', 'ns1.google.com.', 'ns3.google.com.']
+  TXT: ['"MS=E4A68B9AB2BB9670BCE15412F62916164C0B20BB"', '"onetrust-domain-verification=de01ed21f2fa4d8781cbc3ffb89cf4ef"', '"v=spf1 include:_spf.google.com ~all"', '"facebook-domain-verification=22rm551cu4k0ab0bxsw536tlds4h95"', '"google-site-verification=wD8N7i1JTNTkezJ49swvWW48f8_9xveREV4oB-0Hf5o"', '"google-site-verification=4ibFUgB-wXLQ_S7vsXVomSTVamuOXBiVAzpR5IZ87D0"', '"docusign=05958488-4752-4ef2-95eb-aa7ba8a3bd0e"', '"globalsign-smime-dv=CDYX+XFHUw2wml6/Gb8+59BsH31KzUr6c1l2BPvqKX8="', '"docusign=1b0a6754-49b1-4db5-8540-d2c12664b289"', '"cisco-ci-domain-verification=47c38bc8c4b74b7233e9053220c1bbe76bcc1cd33c7acf7acd36cd6a5332004b"', '"apple-domain-verification=30afIBcvSuDV2PLX"', '"google-site-verification=TV9-DBe4R80X4v0M4U_bd_J9cpOJM0nikft0jAgjmsQ"']
+  SOA: ['ns1.google.com. dns-admin.google.com. 768735800 900 900 1800 60']
+
+[+] Performing WHOIS lookup for google.com
+  domain_name: ['GOOGLE.COM', 'google.com']
+  registrar: MarkMonitor, Inc.
+  creation_date: [datetime.datetime(1997, 9, 15, 4, 0), datetime.datetime(1997, 9, 15, 7, 0)]
+  expiration_date: [datetime.datetime(2028, 9, 14, 4, 0), datetime.datetime(2028, 9, 13, 7, 0)]
+  name_servers: ['NS1.GOOGLE.COM', 'NS2.GOOGLE.COM', 'NS3.GOOGLE.COM', 'NS4.GOOGLE.COM', 'ns2.google.com', 'ns4.google.com', 'ns3.google.com', 'ns1.google.com']
+  emails: ['abusecomplaints@markmonitor.com', 'whoisrequest@markmonitor.com']
+  organization: Google LLC
+
+[+] Enumerating subdomains for google.com
+  Found: www.google.com
+  Found: mail.google.com
+  Found: admin.google.com
+  Found: api.google.com
+  Found: blog.google.com
+  Found: shop.google.com
+  Found: vpn.google.com
+  Found: support.google.com
+  Found: help.google.com
+  Found: m.google.com
+  Found: mobile.google.com
+  Found: apps.google.com
+
+[+] Detecting web technologies for google.com
+  Server: gws
+  Powered by: Not disclosed
+  Status Code: 200
+  Detected Technologies: []
+
+[+] Searching for social media presence
+  Found GitHub: https://github.com/google
+
+[+] Harvesting email addresses
+
+[+] Checking common ports (passive lookup)
+  Target IP: 192.178.24.174
+  Port 80 (HTTP): Open
+  Port 443 (HTTPS): Open
+
+============================================================
+                    RECONNAISSANCE REPORT
+============================================================
+Target: google.com
+Scan Date: 2025-06-09 04:50:57
+============================================================
+
+[+] Detailed report saved to: recon_report_google.com_20250609_045057.json
+
+[+] Passive reconnaissance completed!
